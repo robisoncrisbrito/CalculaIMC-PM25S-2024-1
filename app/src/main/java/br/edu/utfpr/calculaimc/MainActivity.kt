@@ -2,9 +2,12 @@ package br.edu.utfpr.calculaimc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etAltura : EditText
     private lateinit var tvResultado : TextView
     private lateinit var btCalcular : Button
-    private lateinit var btLimpar : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,23 +24,44 @@ class MainActivity : AppCompatActivity() {
         etAltura = findViewById<EditText>( R.id.etAltura )
         tvResultado = findViewById<TextView>( R.id.tvResultado )
         btCalcular = findViewById<Button>( R.id.btCalcular )
-        btLimpar = findViewById<Button>( R.id.btLimpar )
 
         btCalcular.setOnClickListener{
             btCalcularOnClick()
         }
 
-        btLimpar.setOnClickListener {
-            btLimparOnClick()
-        }
-
     } //fim da função onCreate()
 
-    private fun btLimparOnClick() {
-
-    }
 
     private fun btCalcularOnClick() {
+
+        if ( etPeso.text.isEmpty() ) {
+            etPeso.setError( "Campo peso deve ser preenchido." )
+            etPeso.requestFocus()
+            return
+        }
+
+        if ( etAltura.text.isEmpty() ) {
+            etAltura.setError( "Campo altura deve ser preenchido." )
+            etAltura.requestFocus()
+            return
+        }
+
         val peso = etPeso.text.toString().toDouble()
+        val altura = etAltura.text.toString().toDouble()
+
+        val imc = peso / Math.pow(altura, 2.0)
+
+        val df = DecimalFormat ( "0.00" )
+
+        tvResultado.setText( df.format( imc ) )
+
+        Toast.makeText( this, "Sucesso!!!!", Toast.LENGTH_LONG ).show()
+    }
+
+    fun btLimparOnClick(view: View) {
+        etPeso.setText( "" )
+        etAltura.setText( "" )
+        tvResultado.setText( "0.00" )
+        etPeso.requestFocus()
     }
 }

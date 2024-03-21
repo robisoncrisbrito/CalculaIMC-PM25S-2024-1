@@ -54,6 +54,7 @@
             android:id="@+id/btLimpar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="btLimparOnClick"
             android:text="Limpar" />
 
     </LinearLayout>
