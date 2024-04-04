@@ -35,6 +35,44 @@
         app:layout_constraintTop_toBottomOf="@id/etPeso"
         android:text="Altura:" />
 
+    <EditText
+        android:id="@+id/etAltura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="@id/etPeso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvAltura" />
+
+
+    <TextView
+        android:id="@+id/tvIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etAltura"
+        android:text="IMC:" />
+
+    <TextView
+        android:id="@+id/tvResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="0.0"
+        app:layout_constraintStart_toStartOf="@id/etAltura"
+        app:layout_constraintBottom_toBottomOf="@id/tvIMC"/>
+
+    <Button
+        android:id="@+id/btCalcular"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Calcular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIMC"
+        />
 
 
 
