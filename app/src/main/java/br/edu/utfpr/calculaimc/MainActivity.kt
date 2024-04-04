@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import java.text.DecimalFormat
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         Log.i( "onCreate", "mensagem de info aqui" )
         
         super.onCreate(savedInstanceState)
-        System.out.println( "passei aqui 2" )
+        println( "passei aqui 2" )
         setContentView(R.layout.activity_main)
-        System.out.println( "passei aqui 3" )
+        println( "passei aqui 3" )
 
         etPeso = findViewById( R.id.etPeso )
         etAltura = findViewById( R.id.etAltura )
@@ -49,13 +50,13 @@ class MainActivity : AppCompatActivity() {
     private fun btCalcularOnClick() {
 
         if ( etPeso.text.isEmpty() ) {
-            etPeso.setError( "Campo peso deve ser preenchido." )
+            etPeso.error = "Campo peso deve ser preenchido."
             etPeso.requestFocus()
             return
         }
 
         if ( etAltura.text.isEmpty() ) {
-            etAltura.setError( "Campo altura deve ser preenchido." )
+            etAltura.error = "Campo altura deve ser preenchido."
             etAltura.requestFocus()
             return
         }
@@ -63,11 +64,11 @@ class MainActivity : AppCompatActivity() {
         val peso = etPeso.text.toString().toDouble()
         val altura = etAltura.text.toString().toDouble()
 
-        val imc = peso / Math.pow(altura, 2.0)
+        val imc = peso / altura.pow(2.0)
 
         val df = DecimalFormat ( "0.00" )
 
-        tvResultado.setText( df.format( imc ) )
+        tvResultado.text = df.format( imc )
 
         Toast.makeText( this, "Sucesso!!!!", Toast.LENGTH_LONG ).show()
     }
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     fun btLimparOnClick(view: View) {
         etPeso.setText( "" )
         etAltura.setText( "" )
-        tvResultado.setText( "0.00" )
+        tvResultado.text = "0.00"
         etPeso.requestFocus()
     }
 }
