@@ -2,6 +2,7 @@ package br.edu.utfpr.calculaimc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -17,19 +18,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btCalcular : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.e( "onCreate", "mensagem de erro aqui" )
+        Log.w( "onCreate", "mensagem de warning aqui" )
+        Log.i( "onCreate", "mensagem de info aqui" )
+        
         super.onCreate(savedInstanceState)
+        System.out.println( "passei aqui 2" )
         setContentView(R.layout.activity_main)
+        System.out.println( "passei aqui 3" )
 
-        etPeso = findViewById<EditText>( R.id.etPeso )
-        etAltura = findViewById<EditText>( R.id.etAltura )
-        tvResultado = findViewById<TextView>( R.id.tvResultado )
-        btCalcular = findViewById<Button>( R.id.btCalcular )
+        etPeso = findViewById( R.id.etPeso )
+        etAltura = findViewById( R.id.etAltura )
+        tvResultado = findViewById( R.id.tvResultado )
+        btCalcular = findViewById( R.id.btCalcular )
 
-        btCalcular.setOnClickListener{
+
+
+        btCalcular.setOnClickListener {
             btCalcularOnClick()
         }
 
+
+
     } //fim da função onCreate()
+
+
+
 
 
     private fun btCalcularOnClick() {
