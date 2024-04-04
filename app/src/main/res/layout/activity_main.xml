@@ -74,6 +74,16 @@
         app:layout_constraintTop_toBottomOf="@id/tvIMC"
         />
 
+    <Button
+        android:id="@+id/btLimpar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:onClick="btLimparOnClick"
+        android:padding="16dp"
+        android:text="Limpar"
+        app:layout_constraintBottom_toBottomOf="@id/btCalcular"
+        app:layout_constraintStart_toEndOf="@id/btCalcular" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
