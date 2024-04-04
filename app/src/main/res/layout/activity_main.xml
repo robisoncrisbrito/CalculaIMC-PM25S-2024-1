@@ -20,10 +20,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:hint="Peso em KG"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvPeso"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="#0D6E63"
+        android:importantForAutofill="no" />
 
 
     <TextView
@@ -41,9 +44,12 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:padding="16dp"
+        android:hint="Altura em m"
+        android:textColorHint="#0D6E63"
         app:layout_constraintStart_toStartOf="@id/etPeso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tvAltura" />
+        app:layout_constraintBottom_toBottomOf="@id/tvAltura"
+        android:importantForAutofill="no" />
 
 
     <TextView
