@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import java.text.DecimalFormat
+import java.util.Locale
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
@@ -50,13 +51,13 @@ class MainActivity : AppCompatActivity() {
     private fun btCalcularOnClick() {
 
         if ( etPeso.text.isEmpty() ) {
-            etPeso.error = "Campo peso deve ser preenchido."
+            etPeso.error = getString( R.string.erro_peso )
             etPeso.requestFocus()
             return
         }
 
         if ( etAltura.text.isEmpty() ) {
-            etAltura.error = "Campo altura deve ser preenchido."
+            etAltura.error = getString( R.string.erro_altura )
             etAltura.requestFocus()
             return
         }
@@ -64,19 +65,27 @@ class MainActivity : AppCompatActivity() {
         val peso = etPeso.text.toString().toDouble()
         val altura = etAltura.text.toString().toDouble()
 
-        val imc = peso / altura.pow(2.0)
 
-        val df = DecimalFormat ( "0.00" )
+
+        var imc = 0.0;
+
+        if ( Locale.getDefault().language.equals( "en" ) ) {
+            imc = 703 * ( peso / altura.pow( 2.0 ) )
+        } else {
+            imc = peso / altura.pow(2.0)
+        }
+
+        val df = DecimalFormat ( "0.0" )
 
         tvResultado.text = df.format( imc )
 
-        Toast.makeText( this, "Sucesso!!!!", Toast.LENGTH_LONG ).show()
+        Toast.makeText( this, getString( R.string.sucesso ), Toast.LENGTH_LONG ).show()
     }
 
     fun btLimparOnClick(view: View) {
         etPeso.setText( "" )
         etAltura.setText( "" )
-        tvResultado.text = "0.00"
+        tvResultado.text = getString( R.string.zeros )
         etPeso.requestFocus()
     }
 }
